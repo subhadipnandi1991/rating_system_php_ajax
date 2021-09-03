@@ -5,7 +5,7 @@
     session_start();
   }
 
-  if(!isset($_SESSION['user'])) {
+  if(isset($_SESSION['user'])) {
     header("Location: {$URL}index.php");
   } else {
 
@@ -23,7 +23,7 @@
             <h1>Login</h1>
         </div>
         <div id="content">
-            <form action="<?php echo $SERVER['PHP_SELF']; ?>" method="POST">
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                 <div class="form-group">
                     <label>Email Address</label>
                     <input type="text" name="username" value="" />
@@ -41,20 +41,24 @@
                 } elseif (!isset($_POST['password']) || $_POST['password'] == '') {
                   echo '<div class="message-error">Please Fill All the fields</div>';
                 } else {
-                  $username = test_input(mysqli_real_escape_srting($conn, $_POST['username']));
-                  $password = md5(test_input(mysqli_real_escape_srting($conn, $_POST['password'])));
+                  $username = test_input(mysqli_real_escape_string($conn, $_POST['username']));
+                  $password = md5(test_input(mysqli_real_escape_string($conn, $_POST['password'])));
+
+                  // echo $username;
+                  // echo $password;
+                  // die();
 
                   $sql = "SELECT username FROM users WHERE username='$username' AND password='$password'";
                   $result = mysqli_query($conn, $sql);
 
-                  if (myqsli_num_rows($rows) > 0) {
+                  if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
                       /* Start the session */
                       session_start();
                       /* set session variables */
                       $_SESSION['user'] = $username;
                       /* redirect to page after successfully login*/
-                      header("Location: http://localhost:4000/index.php");
+                      header("Location: {$URL}index.php");
                     }
                   } else {
                     echo '<div class="message-error">Username and Password does not matched</div>';

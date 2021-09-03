@@ -10,13 +10,22 @@
 	<div id="main">
 		<div id="header">
 			<h1>Rating System</h1>
+			<?php
+				if(!session_id()) { session_start(); }
+
+				if (isset($_SESSION['user'])) {
+
+			?>
 				<div class="user-info">
-					<span>Hello,</span> |
+					<span>Hello, <?php echo $_SESSION['user']; ?></span> |
 					<a href="logout.php">Logout</a>
 				</div>
+			<?php } else { ?>
 				<div class="user-info">
 					<a href="login.php">Login</a>
 				</div>
+			<?php } ?>
+
 		</div>
 		<div id="content">
 			<?php

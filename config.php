@@ -11,7 +11,16 @@
         die("Connection failed: " . mysqli_connect_error());
     }
 
-    $URL = $_SERVER['HTTP_HOST'];
+
+
+    // $URL = 'http://localhost/~badshah007/rating-system/';
+      $URL = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+
+      echo $URL;
+    // //
+    // echo "<pre>";
+    // print_r($_SERVER['SERVER_SOFTWARE']) ;
+    // echo "</pre>";
 
     function test_input($data) {
       $data = trim($data);
