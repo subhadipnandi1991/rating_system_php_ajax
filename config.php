@@ -23,9 +23,9 @@
     // echo "</pre>";
 
     function test_input($data) {
-      $data = trim($data);
-      $data = stripslashes($data);
-      $data = htmlspecialchars($data);
+      $data = trim($data); // to remove all spaces
+      $data = stripslashes($data); // remove backslashes
+      $data = htmlspecialchars($data); //converts predefined chars to html entities
       return $data;
     }
 
