@@ -26,11 +26,11 @@
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                 <div class="form-group">
                     <label>Email Address</label>
-                    <input type="text" name="username" value="" />
+                    <input type="text" name="username" value="admin" />
                 </div>
                 <div class="form-group">
                     <label>password</label>
-                    <input type="password" name="password" value="" />
+                    <input type="password" name="password" value="admin" />
                 </div>
                 <input type="submit" class="btn" name="login" value="Login" />
             </form>

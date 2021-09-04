@@ -13,10 +13,10 @@
 
 
 
-    // $URL = 'http://localhost/~badshah007/rating-system/';
-      $URL = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+    $URL = 'http://localhost/~badshah007/rating_system_php_ajax/';
+      // $URL = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 
-      echo $URL;
+      // echo $URL;
     // //
     // echo "<pre>";
     // print_r($_SERVER['SERVER_SOFTWARE']) ;

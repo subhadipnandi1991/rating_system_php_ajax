@@ -27,7 +27,7 @@
 		</div>
 		<div id="content">
 			<?php
-			 // db connection 
+			 // db connection
 			include 'config.php';
 			// fetch all posts
 			$sql = "SELECT * FROM posts";
@@ -97,9 +97,8 @@
 
 			// resert star color
 			function resetStarColor(id){
-				
 				var rating = $("#"+id).siblings('.rated').html();
-				
+
 				if(rating != '0'){
 					for(var i=0;i<=4;i++){
 						if(i<rating){
@@ -111,22 +110,21 @@
 				}else{
 					$("#"+id).children("li").css('color','black');
 				}
-				
+
 			}
 
-
 			$('.rating li').click(function(){
-
 				var id = $(this).parent().attr('id');
 				var curIndex = $(this).attr('data-index');
 				var cur = (parseInt(curIndex) + 1);
-
 				var post_id = $("#"+id).siblings('.post_id').val();
+				// console.log("cur: "+cur+" post_id: "+post_id);
 				$.ajax({
 					url: 'rating.php',
 					type: 'post',
 					data: {post:post_id,rating:cur},
 					success: function(response){
+						console.log("response: "+response);
 						if(response == 'true'){
 							location.reload();
 						}else if(response == 'please_login'){
@@ -134,10 +132,9 @@
 						}
 					}
 				});
-
 			});
-
 		});
+
 	</script>
 </body>
 </html>
